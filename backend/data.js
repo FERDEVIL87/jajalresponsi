@@ -33,4 +33,8 @@ const projects = [
   }
 ];
 
-module.exports = { educationHistory, skills, projects };
+module.exports = {
+  educationHistory,
+  skills,
+  projects
+};

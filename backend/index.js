@@ -1,28 +1,39 @@
-const express = require('express');
-const cors = require('cors');
 const { educationHistory, skills, projects } = require('./data');
 
-// Serverless handler
+// Serverless handler untuk Vercel
 function handler(req, res) {
-  if (req.url.startsWith('/api/education')) {
+  // Pastikan method GET
+  if (req.method !== 'GET') {
+    res.statusCode = 405;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Method Not Allowed');
+    return;
+  }
+
+  // Routing sederhana
+  if (req.url === '/api/education') {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(educationHistory));
-  } else if (req.url.startsWith('/api/skills')) {
+  } else if (req.url === '/api/skills') {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(skills));
-  } else if (req.url.startsWith('/api/projects')) {
+  } else if (req.url === '/api/projects') {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(projects));
   } else {
     res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain');
     res.end('Not found');
   }
 }
 
-module.exports.handler = handler;
+// Untuk Vercel: ekspor default
+module.exports = handler;
 
-// Jalankan Express hanya jika bukan di serverless
+// Untuk development lokal: jalankan Express jika bukan di serverless
 if (require.main === module) {
+  const express = require('express');
+  const cors = require('cors');
   const app = express();
   const PORT = 3000;
 
