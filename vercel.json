@@ -3,12 +3,11 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "/backend/index.js"
+            "destination": "/api/:path*"
         },
         {
             "source": "/((?!api/|.*\\..*).*)",
             "destination": "/index.html"
         }
-
     ]
 }
