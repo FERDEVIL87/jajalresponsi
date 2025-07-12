@@ -18,23 +18,43 @@ const skills = [
 
 const projects = [
   {
-    title: 'Website Toko Komputer Online',
-    image: 'https://png.pngtree.com/thumb_back/fh260/background/20230526/pngtree-computer-store-with-many-computers-and-displays-image_2640586.jpg',
-    description: 'Platform e-commerce dengan fitur keranjang belanja.',
-    tech: ['Vue.js', 'Express.js', 'PostgreSQL'],
-    link: '#'
-  },
-  {
-    title: 'Website Lagu Ultraman',
-    image: 'https://www.greenscene.co.id/wp-content/uploads/2024/10/ultraman-big-696x497.jpg',
-    description: 'Web berisi lagu lagu ultraman dari showa sampai reiwa.',
-    tech: ['React', 'Firebase'],
-    link: '#'
+    id: '1',
+    title: 'JWR Comp Yogyakarta',
+    image: 'https://gamebrott.com/wp-content/uploads/2019/10/alnectin-1024x576.jpg',
+    description: 'Spesialis service laptop & printer dengan reputasi baik dan layanan antar-jemput.',
+    tech: ['Service', 'Laptop', 'Printer', 'Tukar Tambah'],
+    link: null,
+
+    tags: ['Service Profesional', 'Tukar Tambah'],
+    images: [
+      'project_images/toko_komputer/yangversa-1.jpg'
+    ],
+    sections: [
+      {
+        title: 'Ringkasan',
+        content: 'KomputerAwet.com fokus pada servicing laptop/printer termasuk repaint, plus opsi tukar tambah.' 
+      },
+      {
+        title: 'Kelebihan',
+        points: [
+          'Pelayanan detail & transparan',
+          'Garansi service & antar-jemput',
+          'Rating 4.6 dari pelanggan lokal'
+        ]
+      },
+      {
+        title: 'Kontak',
+        points: [
+          'Alamat: Jl. Raya Pekayon No.25, Pekayon Jaya',
+          'Telp/WA: 0812‑1034 212'
+        ]
+      }
+    ],
+    links: [
+      { label: 'Website', url: 'http://www.komputerawet.com' }
+    ]
   }
 ];
 
-module.exports = {
-  educationHistory,
-  skills,
-  projects
-};
+
+module.exports = { educationHistory, skills, projects };

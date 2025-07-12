@@ -1,50 +1,42 @@
-const { educationHistory, skills, projects } = require('./data');
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 
-// Serverless handler untuk Vercel
-function handler(req, res) {
-  // Pastikan method GET
-  if (req.method !== 'GET') {
-    res.statusCode = 405;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Method Not Allowed');
-    return;
-  }
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-  // Routing sederhana
-  if (req.url === '/api/education') {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(educationHistory));
-  } else if (req.url === '/api/skills') {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(skills));
-  } else if (req.url === '/api/projects') {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(projects));
-  } else {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Not found');
-  }
-}
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
+app.use(cors({ origin: CORS_ORIGIN }));
 
-// Untuk Vercel: ekspor default
-module.exports = handler;
+// --- REMOVED: Serving static files for project images from backend ---
+// app.use('/project_images', express.static(path.join(__dirname, 'project_images')));
 
-// Untuk development lokal: jalankan Express jika bukan di serverless
-if (require.main === module) {
-  const express = require('express');
-  const cors = require('cors');
-  const app = express();
-  const PORT = 3000;
+const { educationHistory, skills, projects } = require('./data.js');
 
-  app.use(cors());
-  app.use(express.json());
+app.get('/api/projects', (req, res) => {
+    res.json(projects);
+});
 
-  app.get('/api/education', (req, res) => res.json(educationHistory));
-  app.get('/api/skills', (req, res) => res.json(skills));
-  app.get('/api/projects', (req, res) => res.json(projects));
+app.get('/api/projects/:id', (req, res) => {
+    const projectId = req.params.id;
+    const project = projects.find(p => p.id === projectId);
 
-  app.listen(PORT, () => {
-    console.log(` Server backend berjalan di http://localhost:${PORT}`);
-  });
-}
+    if (project) {
+        res.json(project);
+    } else {
+        res.status(404).json({ message: 'Project not found' });
+    }
+});
+
+app.get('/api/education', (req, res) => {
+    res.json(educationHistory);
+});
+
+app.get('/api/skills', (req, res) => {
+    res.json(skills);
+});
+
+app.listen(PORT, () => {
+    console.log(`Backend server running on port ${PORT}`);
+    console.log(`CORS allowed for origin: ${CORS_ORIGIN}`);
+});

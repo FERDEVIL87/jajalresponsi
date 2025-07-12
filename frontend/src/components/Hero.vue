@@ -1,11 +1,11 @@
 <template>
 <section id="profil" class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
 <div class="md:w-1/2 mb-10 md:mb-0">
-<h1 class="text-5xl font-bold text-gray-800 mb-4 animate-slide-in-left" style="animation-delay:
-200ms;">
-Halo, Saya <span class="text-blue-600">Ferdy</span>
+<h1 class="text-5xl font-bold text-white mb-4 animate-slide-in-left" style="animation-delay:
+200ms; text-shadow: 0 0 10px rgba(255,255,255,0.8);">
+Halo, Saya <span class="text-red-600">Ferdy</span>
 </h1>
-<p class="text-xl text-gray-600 mb-8 animate-slide-in-left" style="animation-delay: 400ms;">
+<p class="text-xl text-white mb-8 animate-slide-in-left" style="animation-delay: 400ms; text-shadow: 0 0 10px rgba(255,255,255,0.8);">
 Mahasiswa Teknik Informatika yang bersemangat dalam pengembangan web dan desain
 antarmuka dan antarpunggung.
 </p>
@@ -19,7 +19,7 @@ Hubungi Saya
 </div>
 <div class="md:w-1/2 flex justify-center animate-slide-in-right">
 <img src="https://assetsio.gnwcdn.com/Honaki-Phainon-Header.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="Foto Profil" class="w-80 h-80 rounded-full
-object-cover shadow-lg">
+object-cover shadow-lg" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));">
 </div>
 </section>
 </template>

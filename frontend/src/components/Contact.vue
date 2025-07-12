@@ -12,11 +12,8 @@ Kirim Email
 </a>
 <div class="flex justify-center space-x-6 mb-8">
 
-<a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-
+<a href="https://github.com/FERDEVIL87" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-
 300">GitHub</a>
-
-<a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-
-300">LinkedIn</a>
 
 </div>
 <p class="text-gray-500">&copy; {{ new Date().getFullYear() }} Ferdy Syaifanoor. Dibuat dengan
